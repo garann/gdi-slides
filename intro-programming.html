@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Intro to Programming</title>
+
+		<meta name="description" content="Girl Develop It framework for easily creating beautiful presentations using HTML in GDI theme. Forked from Hakim El Hattab's reveal.js">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/gdicool-atx.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="lib/css/dark.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="css/print/pdf.css" type="text/css" media="print">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h2>Quick setup task</h2>
+					<p>If you don't have the Chrome browser installed, go to <a href="http://google.com/chrome">http://google.com/chrome</a> and download and install it. Don't forget to open it to make sure it worked. ;) Just ask if you need help!</p>
+				</section>
+
+				<section>
+					<h1>Introduction to Programming</h1>
+					<h2>Girl Develop It Austin</h2>
+					<p><a href="http://garann.com">Garann Means</a> / <a href="http://twitter.com/garannm">@garannm</a></p>
+				</section>
+
+				<section>
+					<h2>What is programming?</h2>
+					<h3 class="fragment">Humans giving instructions to machines.</h3>
+				</section>
+
+				<section>
+					<h2>Everyday things we "program"</h2>
+					<ul>
+						<li>microwaves</li>
+						<li>remote controls</li>
+						<li>DVRs</li>
+						<li><b>thermostats</b></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Most programming builds on other programming</h2>
+					<ul>
+						<li>low-level: moving mechanical parts</li>
+						<li>platform: the machine and software the program runs on</li>
+						<li>libraries: pre-written code to handle common tasks</li>
+						<li>functions: abstractions within the program</li>
+						<li>UI: how a user of the program triggers functions</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Programming a thermostat</h2>
+					<ul>
+						<li>During the day, I want it to be 70º</li>
+						<li>At night, I want it to be 64º</li>
+						<li>During the week, "night" ends at 6am</li>
+						<li>On the weekend it ends at 10am</li>
+					</ul>
+					<a href="http://www.flickr.com/photos/cliff_robin/2399824870/"><img src="img/thermostat.jpg" height="400" /></a>
+				</section>
+
+				<section>
+					<h2>Programming anything</h2>
+					<ul>
+						<li>What is the desired result?</li>
+						<li>What actions need to be taken to achieve it?</li>
+						<li>Are there special circumstances?
+							<ul>
+								<li>If special circumstances arise, what different actions must be taken?</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Programming the thermostat</h2>
+					<ul>
+						<li>Temperature should never be less than 64º</li>
+						<li>If it's after 6am, the temperature should be 70º
+							<ul>
+								<li>Unless it's a weekend before 10am</li>
+							</ul>
+						</li>
+						<li>We interact with the UI</li>
+						<li>We set configuration values</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Programming the thermostat</h2>
+					<pre><code class="javascript">if ( temperature < 64 ) {
+	raiseTemperature( 64 );
+} else if ( temperature < 70 && time > 6 ) {
+	if ( weekend && time < 10 ) {
+		return;
+	} else {
+		raiseTemperature( 70 );
+	}
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>But we don't have to write all that!</h2>
+					<pre><code contenteditable class="javascript">var nightTemp = 64,
+	dayTemp = 70,
+	morning = 6,
+	weekendMorning = 10;
+
+if ( temperature < nightTemp ) {
+	raiseTemperature( nightTemp );
+} else if ( temperature < dayTemp && time > morning ) {
+	if ( weekend && time < weekendMorning ) {
+		return;
+	} else {
+		raiseTemperature( dayTemp );
+	}
+}</code></pre>
+				</section>
+
+				<section>
+					<a href="https://twitter.com/slicknet/status/279055906241646592"><img src="img/tenpercent.png" /></a>
+				</section>
+
+				<section>
+					<h2>If you can program a thermostat, you can program a computer.</h2>
+				</section>
+
+				<section>
+					<h2>A little history</h2>
+				</section>
+
+				<section>
+					<h2>The early days</h2>
+					<ul>
+						<li>100 BC: Antikythera Mechanism</li>
+						<li>1801: the Jaquard loom</li>
+						<li>1822: Charles Babbage invents the Difference Engine</li>
+						<li>1842: Ada Lovelace writes the first computer program</li>
+					</ul>
+					<a href="http://en.wikipedia.org/wiki/File:Ada_Lovelace.jpg"><img src="img/ada.jpg" /></a>
+				</section>
+
+				<section>
+					<h2>Mid-century programming</h2>
+					<ul>
+						<li>1946: ENIAC programmed by flipping switches</li>
+						<li>1952: Adm. Grace Hopper creates the first compiler</li>
+						<li>1957-9: FORTRAN, LISP, and COBOL created</li>
+						<li>1964: BASIC created at Dartmouth</li>
+						<li>1969: C created by Dennis Ritchie</li>
+					</ul>
+					<a href="http://www.flickr.com/photos/alexandervandijk/423925529/"><img src="img/eniac.jpg" /></a>
+				</section>
+
+				<section>
+					<h2>Modern programming</h2>
+					<ul>
+						<li>1980: Smalltalk and Object-Oriented Programming</li>
+						<li>1983: C++</li>
+						<li>1986: Objective-C</li>
+						<li>1990: Haskell</li>
+						<li>1991: The World Wide Web; Python</li>
+						<li>1995: PHP; Ruby; JavaScript</li>
+						<li>1996: Java</li>
+						<li>2001: C#</li>
+						<li>2003: Scala</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>"It's just like planning a dinner. You have to plan ahead and schedule everything so it's ready when you need it. Programming requires patience and the ability to handle detail." - Dr. Grace Hopper</h3>
+					<a href="http://www.flickr.com/photos/maaorg/5506849073/"><img src="img/grace-civilian.jpg" /></a>
+				</section>
+
+				<section>
+					<h2>Essential concepts</h2>
+				</section>
+
+				<section>
+					<h2>Platform</h2>
+					<ul>
+						<li>hardware and software your program runs on</li>
+						<li>programs must be compiled for a specific platform</li>
+						<li>installable platforms like Java or .NET</li>
+						<li>ex: operating systems, web browsers</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Installed applications</h2>
+					<ul>
+						<li>run on user's operating system or a runtime environment</li>
+						<li>can access multiple parts of the user's system</li>
+						<li>may work directly with devices (e.g., speakers)</li>
+						<li>not changeable once installed</li>
+						<li>can only be updated by installing a new version</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Web servers</h2>
+					<ul>
+						<li>run program accessible by clients at a location on the web</li>
+						<li>can store a session, remembering an individual client for a short time period</li>
+						<li>basic program finds web pages on the server and sends them to the client</li>
+						<li>can incorporate other programs, also stored on the server</li>
+						<li>programs can be changed on the server</li> 
+						<li>updates are available immediately* to clients</li>
+						<li>web server programs are never meant to stop running</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Databases</h2>
+					<ul>
+						<li>can store text, numbers, or binary data</li>
+						<li>relational databases create maps of relationships between data</li>
+						<li>key value stores store simple data without maps</li>
+						<li>different databases are used for different applications</li>
+						<li>additional libraries allow programs to connect to databases, like a client does to a web server</li>
+						<li>each database has its own language or API, e.g. Structured Query Language</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Version control</h2>
+					<ul>
+						<li>a place to back up successive versions of your work</li>
+						<li>essential for teams of programmers</li>
+						<li>may have the ability to merge multiple edits to the same code</li>
+						<li>provides documentation of when certain things were changed</li>
+						<li>can be used to deploy code to web servers</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Compilation</h2>
+					<ul>
+						<li>certain programs must be built</li>
+						<li>building produces a binary or executable</li>
+						<li>this file runs on the platform for which it was compiled</li>
+						<li>compilation translates between the programming language and the language of the platform</li>
+						<li>ex: desktop and mobile apps</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Scripting and interpreted languages</h2>
+					<ul>
+						<li>don't need to be compiled</li>
+						<li>code is interpreted by the runtime when it's loaded</li>
+						<li>additional commands can be given after loading</li>
+						<li>ways of controlling an existing system</li>
+						<li>ex: a web browser</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Execution</h2>
+					<ul>
+						<li>execution is starting a program</li>
+						<li>program code becomes accessible</li>
+						<li>program can listen for input</li>
+						<li>programs that are started manually should provide a way to exit</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Input and output</h2>
+					<ul>
+						<li>input is what's provided by the user or other programs</li>
+						<li>keystrokes, mouse clicks, voice, video, etc.</li>
+						<li>output is what the program provides back</li>
+						<li>text, data, files, etc.</li>
+						<li>input and output can be piped from one program to another</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Functions</h2>
+					<ul>
+						<li>small units of stored code</li>
+						<li>have their own inputs and outputs within the program</li>
+						<li>executed by program, not by user directly</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Operators</h2>
+					<ul>
+						<li>logical, mathematical, and other micro-functions built into a programming language</li>
+						<li>most common might be the assignment operator (often <code>=</code>)</li>
+						<li>operators can be words (e.g., new, void)</li>
+						<li>operators can be shortcuts for statements (e.g., ternary operators)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Variables, literals, and constants</h2>
+					<ul>
+						<li>values that can change during execution are variables</li>
+						<li>variables store pieces of data that are in use</li>
+						<li>literals are text, numbers, or other data written directly into the program</li>
+						<li>literals may be stored in variables for reuse</li>
+						<li>constants are shorthands that should not be changed</li>
+						<li>constants can be changed by the programmer in one place</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Data types</h2>
+					<ul>
+						<li>different types of data are stored differently in memory</li>
+						<li>some languages like to allocate memory for a variable when it's declared (strongly typed)</li>
+						<li>common types are strings (text), characters (individual letters or punctuation), integers (whole numbers), and floating point numbers (decimals)</li>
+						<li>high-level languages have complex types like arrays and objects</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Useful tools</h2>
+				</section>
+
+				<section>
+					<h2>A place to write code</h2>
+					<ul>
+						<li>most code is written in a text editor or an Integrated Development Environment</li>
+						<li>an IDE contains a text editor</li>
+						<li>we use Sublime Text 2</li>
+						<li>when writing code on a server, you may need to use a text-only editor like Vim</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Installing Sublime</h2>
+					<ol>
+						<li>download the software from <a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></li>
+						<li>save it to your Desktop</li>
+						<li>double-click to run the installer</li>
+						<li>open Sublime to make sure it worked</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>A place to try things out</h2>
+					<ul>
+						<li>experienced programmers may write lots of code before trying it</li>
+						<li>a good practice is to write tests for the code first</li>
+						<li>if you're not sure something will work, or how to do it, you can try bits and pieces</li>
+						<li>you can try out HTML, CSS, and JavaScript from a web browser</li>
+						<li>you can try out other interpreted languages from a Read-Eval-Print Loop (REPL)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Testing some JavaScript</h2>
+					<ol>
+						<li>open Chrome</li>
+						<li>hit Cmd+Opt+J (Mac) or Ctrl+Shift+J (Win) to open the developer console</li>
+						<li>type <code>var a = 10;</code> and hit Enter</li>
+						<li>type <code>a + 20</code> and hit Enter</li>
+						<li>type <code>var n = "Your Name Here";</code> and hit Enter</li>
+						<li>type <code>"Hi " + n</code> and hit Enter</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Testing Ruby and Python</h2>
+					<ol>
+						<li>in your browser, go to <a href="http://repl.it">repl.it</a></li>
+						<li>click Ruby or Python in the "Practical" section</li>
+						<li>wait for the REPL to load</li>
+						<li>click the "eg" in the top right</li>
+						<li>click the "Hello World" example</li>
+						<li>(it will load in the REPL)</li>
+						<li>hit Enter to see it work</li>
+					</ol>
+				</section> 
+
+				<section>
+					<h2>Access the command line</h2>
+					<ul>
+						<li>for Mac, double-click Terminal in the Applications directory</li>
+						<li>for Windows, go to Run under the Windows menu and type <code>cmd</code></li>
+						<li>in the future, you run your own REPL here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>A place to store your work</h2>
+					<ul>
+						<li>it's best to decide where you'll save your code before you start writing it</li>
+						<li>code should be saved on the computer or server where it's written</li>
+						<li>once written, code should be checked into version control</li>
+						<li>free online version control includes Github, Bitbucket, and Source Forge</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Creating a file</h2>
+					<ol>
+						<li>in Finder (Mac) or Explorer (Win), create a new directory called GDI</li>
+						<li>drag the folder to Sublime</li>
+						<li>(the folder should appear in a panel on the left)</li>
+						<li>right-click the folder and choose New File</li>
+						<li>save the file as hello.js</li>
+						<li>type <code>console.log("Hello!");</code> in the file</li>
+						<li>save again</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Putting it on Github</h2>
+					<ol>
+						<li>go to <a href="http://github.com">github.com</a> and create an account if you don't have one</li>
+						<li>generate an SSH key, following the directions (work in teams and ask us if you get stuck!)</li>
+						<li>(you'll need to use the command line)</li>
+						<li>once you have an account, scroll to the bottom of the page</li>
+						<li>click Github for Mac or Github for Windows</li>
+						<li>download and install the software</li>
+						<li>open the Github application</li>
+						<li>under File, choose New Repository</li>
+						<li>give your repo a name, choose the folder you created, and push to Github!</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>A place to get help</h2>
+					<ul>
+						<li>every computer programming language has its own support channels</li>
+						<li>find the official site for documentation</li>
+						<li>if your language has an <a href="http://webchat.freenode.net/">IRC channel</a>, ask questions there</li>
+						<li>we're always here to point you in the right direction if we can</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<a href="http://www.flickr.com/photos/imcomkorea/3060341830/"><img src="img/grace.jpg" /></a>
+				</section>
+        
+
+			</div>
+  		<footer>
+        <div class="copyright">
+          Introduction to Programming -- Girl Develop It Austin --
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+        </div>
+      </footer>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
